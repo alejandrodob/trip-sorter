@@ -10,6 +10,10 @@
   <%= render "tickets/index" %>
 </p>
 
+<div class="button">
+<%= link_to 'Sort tickets', trip_sorted_path(@trip) %>
+</div>
+
 <%= link_to 'Edit', edit_trip_path(@trip) %> |
 <%= link_to 'Back', trips_path %> |
 <%= link_to 'Add new ticket to this trip', new_trip_ticket_path(@trip) %>

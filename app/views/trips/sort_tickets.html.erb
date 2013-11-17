@@ -1,0 +1,13 @@
+<h1>Sorted tickets</h1>
+
+<ol>
+  <% @sorted.each do |ticket| %>
+    <li>
+      <%= ticket.generate_indications %>
+    </li>
+  <% end %>
+</ol>
+
+<br>
+
+<%= link_to 'Back', @trip %>

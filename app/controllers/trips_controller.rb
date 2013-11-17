@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: [:show, :edit, :update, :destroy]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy, :sort_tickets]
 
   # GET /trips
   # GET /trips.json
@@ -62,10 +62,14 @@ class TripsController < ApplicationController
     end
   end
 
+  def sort_tickets
+    @sorted = @trip.sort_tickets
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_trip
-      @trip = Trip.find(params[:id])
+      @trip = Trip.find(params[:trip_id] || params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

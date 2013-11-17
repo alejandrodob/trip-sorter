@@ -1,5 +1,6 @@
 TripSorter::Application.routes.draw do
   resources :trips do
+    get "sorted", to: "trips#sort_tickets"
     resources :tickets
   end
 
