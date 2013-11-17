@@ -1,10 +1,11 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  before_action :set_trip, only: [:index, :new, :create]
+  before_action :set_trip, only: [:index, :new, :create, :edit, :update, :destroy]
 
   # GET /tickets
   # GET /tickets.json
   def index
+    @tickets = @trip.tickets
   end
 
   # GET /tickets/1
@@ -24,7 +25,7 @@ class TicketsController < ApplicationController
   # POST /tickets
   # POST /tickets.json
   def create
-    @ticket = Ticket.new(ticket_params)
+    @ticket = @trip.tickets.build ticket_params
 
     respond_to do |format|
       if @ticket.save
@@ -56,7 +57,7 @@ class TicketsController < ApplicationController
   def destroy
     @ticket.destroy
     respond_to do |format|
-      format.html { redirect_to tickets_url }
+      format.html { redirect_to @trip }
       format.json { head :no_content }
     end
   end

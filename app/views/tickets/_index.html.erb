@@ -1,0 +1,29 @@
+<table>
+  <thead>
+    <tr>
+      <th>Origin</th>
+      <th>Destination</th>
+      <th>Transportation</th>
+      <th>Seat info</th>
+      <th>Extra info</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.origin %></td>
+        <td><%= ticket.destination %></td>
+        <td><%= ticket.means_of_transport %></td>
+        <td><%= ticket.seat %></td>
+        <td><%= ticket.extra_info %></td>
+        <td><%= link_to 'Edit', [:edit, @trip, ticket] %></td>
+        <td><%= link_to 'Destroy', [@trip, ticket], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
